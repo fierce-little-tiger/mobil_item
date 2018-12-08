@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>收货地址管理</title>
+    <link type="image/x-icon" rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../res/mui/css/mui.min.css" />
+    <link rel="stylesheet" href="../res/fontAwesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/user.css" />
+</head>
+
+<body>
+    <div class="cz_layout bgg">
+        <header class="cz_topBar">
+            <a href="javascript:history.back();" class="icon_back fa fa-arrow-left"></a>
+            <span class="title">收货地址管理</span>
+        </header>
+        <div class="cz_container">
+            <form action="">
+                <div class="form_box">
+                    
+                    <div class="mui-input-row">
+                        <input name="recipients" type="text" placeholder="收货人">
+                    </div>
+                    <div class="mui-input-row">
+                        <input name="postcode" type="text" placeholder="邮编">
+                    </div>
+
+                    <div class="mui-input-row">
+                            <input name="address" type="text" placeholder="省市县">
+                        </div>
+
+                    <div class="mui-input-row">
+                        <textarea name="addressDetail" id="textarea" rows="5" placeholder="多行文本框"></textarea>
+                    </div>
+                    <input type="submit" class="mui-btn mui-btn-primary btn_login " value="确认添加">
+                </div>
+            </form>
+        </div>
+        <footer class="cz_tabs">
+            <a class="tab_home fa fa-home" href="../index.html"><span>首页</span></a>
+            <a class="tab_cate fa fa-bars" href="../cate.html"><span>分类</span></a>
+            <a class="tab_cart fa fa-shopping-cart" href="../cart.html"><span>购物车</span></a>
+            <a class="tab_user fa fa-user" href="../user/index.html"><span>会员中心</span></a>
+        </footer>
+    </div>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../res/mui/js/mui.min.js"></script>
+    <script>
+        //添加点击事件,获取表单信息,添加到数据库
+        $('form').on('submit' , function(){
+            //获取表单信息
+            var form_center = $(this).serialize();
+            console.log(form_center);
+            if (form_center == '') return alert('填写完整信息');
+            $.ajax({
+                url:'/api/address/addAddress',
+                type:'post',
+                data:form_center,
+                success:function(data){
+                    console.log(data);
+                    if (data.success) return location.href = './address.html';
+                }
+            });
+            
+            return false;
+        });
+    </script>
+</body>
+
+</html>
