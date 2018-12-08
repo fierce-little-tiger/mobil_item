@@ -25,13 +25,13 @@
             <form action="">
                 <div class="form_box">
                     <div class="mui-input-row">
-                        <input name="recipients" type="text" placeholder="收货人">
+                        <input name="recipients" type="text" value="">
                     </div>
                     <div class="mui-input-row">
-                        <input name="postcode" type="text" placeholder="邮编">
+                        <input name="postcode" type="text" value="">
                     </div>
                     <div class="mui-input-row">
-                        <textarea name="addressDetail" id="textarea" rows="5" placeholder="多行文本框"></textarea>
+                        <textarea name="addressDetail" id="textarea" rows="5"  value=""></textarea>
                     </div>
                     <input type="submit" class="mui-btn mui-btn-primary btn_login " value="确认添加">
                 </div>
@@ -47,24 +47,10 @@
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../res/mui/js/mui.min.js"></script>
     <script>
-        //添加点击事件,获取表单信息,添加到数据库
-        $('form').on('submit' , function(){
-            //获取表单信息
-            var form_center = $(this).serialize();
-            console.log(form_center);
-            $.ajax({
-                url:'/api/address/addAddress',
-                type:'post',
-                data:form_center,
-                success:function(data){
-                    console.log(data);
-                    if (data.success) return location.href = './address.html';
-                    alert(data.message)
-                }
-            });
-            
-            return false;
-        });
+       $.ajax({
+           url:'/api/',
+           
+       })
     </script>
 </body>
 

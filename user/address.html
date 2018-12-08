@@ -44,7 +44,7 @@
                 <div class="mui-slider-right mui-disabled">
                     <a class="mui-btn mui-btn-red btn_del" del_id="{{val.id}}">删除</a>
                 </div>
-                <a href="addressManage.html" class="mui-navigate-right mui-slider-handle">
+                <a href="editressManage.html" alter_id="{{val.id}}" class="mui-navigate-right mui-slider-handle">
                     <div class="delivery">邮编：<span>{{val.postCode}}</span>&nbsp;收货人：<span>{{val.recipients}}</span></div>
                     <div class="address">{{val.address}}{{val.addressDetail}}</div>
                 </a>
@@ -77,7 +77,7 @@
                 type:'post',
                 data:{id:id},
                 success:function(data){
-                  
+                   
                     if (data.success) return _this.parents('li').remove();             
                 }
             })
